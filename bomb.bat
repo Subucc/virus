@@ -1,5 +1,5 @@
 color A
-start new2
+start bomb.bat
 cd ..
 cd ..
 cd ..
@@ -13,4 +13,3 @@ cd ..
 cd ..
 cd ..
 tree
-
